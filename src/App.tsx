@@ -1,11 +1,18 @@
 import React, { useState} from 'react';
 import './App.css';
-import InputField from './components/InputField';
-import { Task } from './model/task';
+import Form from './components/Form';
+import Tasks from './components/Tasks';
+import { ITask } from './interfaces/task';
+
+
+
 
 const App: React.FC = () => {
+
   const [task, setTask] = useState<string>("");
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  const [completed, setCompleted] = useState<boolean>(false);
 
   const addTask = (event:React.FormEvent) => {
     event.preventDefault();
@@ -18,12 +25,13 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <span className='heading'>DAILY PLANNER</span>
-      <InputField task={task} setTask={setTask} addTask={addTask}/>
-      {tasks.map((item)=>{
+      <Form task={task} setTask={setTask} addTask={addTask}/>
+      <Tasks tasks={tasks}/>
+      {/* {tasks.map((item)=>{
         return (
           <div>{item.task}</div>
         )
-      })}
+      })} */}
     </div>
   );
 }
