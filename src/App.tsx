@@ -12,7 +12,16 @@ const App: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
-  const [completed, setCompleted] = useState<boolean>(false);
+  // const [completed, setCompleted] = useState<boolean>(false);
+  
+  const deleteTask = (id: number) => {
+    console.log("Delete Btn clicked");
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
+  const completeTask = (id: number) => {
+
+  }
 
   const addTask = (event:React.FormEvent) => {
     event.preventDefault();
@@ -29,12 +38,7 @@ const App: React.FC = () => {
         <h4>DAILY PLANNER</h4>
       </div>
       <Form task={task} setTask={setTask} addTask={addTask}/>
-      <Tasks tasks={tasks}/>
-      {/* {tasks.map((item)=>{
-        return (
-          <div>{item.task}</div>
-        )
-      })} */}
+      <Tasks tasks={tasks} deleteTask={deleteTask}/>
     </div>
   );
 }

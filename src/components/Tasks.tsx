@@ -3,10 +3,11 @@ import { ITask } from '../interfaces/task';
 import SingleTask from './SingleTask';
 
 interface Props {
-  tasks:ITask[]
+  tasks:ITask[],
+  deleteTask:(id:number) => void
 }
 
-const Tasks:React.FC<Props> = ({tasks}) => {
+const Tasks:React.FC<Props> = ({tasks,deleteTask}) => {
   return (
     <div className="container">
       <div>
@@ -16,6 +17,7 @@ const Tasks:React.FC<Props> = ({tasks}) => {
             id={action.id}
             task={action.task}
             isDone={action.isDone}
+            deleteTask={deleteTask}
           />
           ))
         }
