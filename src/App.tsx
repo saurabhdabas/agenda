@@ -3,7 +3,7 @@ import './App.css';
 import Form from './components/Form';
 import Tasks from './components/Tasks';
 import { ITask } from './interfaces/task';
-
+import { BsUiChecks } from 'react-icons/bs';
 
 
 
@@ -24,7 +24,10 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <span className='heading'>DAILY PLANNER</span>
+      <div className='heading'>
+        <BsUiChecks/>
+        <h4>DAILY PLANNER</h4>
+      </div>
       <Form task={task} setTask={setTask} addTask={addTask}/>
       <Tasks tasks={tasks}/>
       {/* {tasks.map((item)=>{

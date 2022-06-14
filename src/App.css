@@ -15,10 +15,15 @@ body {
   font-family: "Neucha", cursive;
 }
 .heading {
+  display:flex;
   text-transform: uppercase;
   font-size: 50px;
   margin: 30px 0;
   color: #183153;
   z-index: 1;
   text-align: center;
+}
+
+.heading > h4 {
+  margin: 0 0 0 25px;
 }
