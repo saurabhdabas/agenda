@@ -4,12 +4,16 @@ import SingleTask from './SingleTask';
 
 interface Props {
   tasks:ITask[],
+  edit:boolean,
   completedTasks:ITask[],
+  editTask:(id:number) => void,
   deleteTask:(id:number) => void,
-  completeTask: (id:number) => void
+  completeTask: (id:number) => void,
+  setEdit:(value: React.SetStateAction<boolean>) => void,
+  setTasks:React.Dispatch<React.SetStateAction<ITask[]>>
 }
 
-const Tasks:React.FC<Props> = ({tasks,completedTasks,deleteTask,completeTask}) => {
+const Tasks:React.FC<Props> = ({edit,tasks,completedTasks,deleteTask,completeTask,editTask,setTasks,setEdit}) => {
   return (
     <div className="container">
       <div className="container__active-tasks">
@@ -19,8 +23,13 @@ const Tasks:React.FC<Props> = ({tasks,completedTasks,deleteTask,completeTask}) =
           <SingleTask
             key={action.id}
             id={action.id}
+            edit={edit}
             task={action.task}
+            setEdit={setEdit}
+            tasks={tasks}
             isDone={action.isDone}
+            setTasks={setTasks}
+            editTask={editTask}
             deleteTask={deleteTask}
             completeTask={completeTask}
           />
@@ -36,6 +45,11 @@ const Tasks:React.FC<Props> = ({tasks,completedTasks,deleteTask,completeTask}) =
             id={action.id}
             task={action.task}
             isDone={action.isDone}
+            edit={edit}
+            tasks={tasks}
+            setEdit={setEdit}
+            editTask={editTask}
+            setTasks={setTasks}
             deleteTask={deleteTask}
             completeTask={completeTask}
           />
