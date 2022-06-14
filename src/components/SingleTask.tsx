@@ -16,9 +16,9 @@ const singleTask: React.FC<Props> = ({id, task, isDone,deleteTask, completeTask}
     <div className="task">
       <div className={isDone ? "task__description strike" : "task__description" }>{task}</div>
         <div className="task__icons">
-        <div><AiFillEdit/></div>
+        <div>{isDone ? "" :<AiFillEdit/>}</div>
         <div><AiFillDelete onClick={()=>deleteTask(id)}/></div>
-        <div><BsPatchCheckFill onClick={()=>completeTask(id)}/></div>
+        <div>{isDone ? "" :<BsPatchCheckFill onClick={()=>completeTask(id)}/>}</div>
       </div>
     </div>
   )

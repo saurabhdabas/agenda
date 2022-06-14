@@ -11,20 +11,24 @@ const App: React.FC = () => {
 
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
-  
+  const [completedTask, setCompletedTask] = useState<boolean>(false);
   const [completedTasks, setCompletedTasks] = useState<ITask[]>([]);
 
   
-  
   const deleteTask = (id: number) => {
-    console.log("Delete Btn clicked");
+    
+    console.log("Delete button clicked");
+    if(completedTask){
+      console.log("task:",task);
+      setCompletedTasks(completedTasks.filter((task) => task.id !== id))
+    }
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
   const completeTask = (id: number) => {
     tasks.filter((task)=>{
       if(task.id === id){
-        
+        setCompletedTask(true);
         setCompletedTasks([...completedTasks,{id:task.id, task: task.task, isDone: true}]);
       }
     })
