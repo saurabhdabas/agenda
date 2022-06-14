@@ -7,24 +7,18 @@ interface Props {
     task:string,
     isDone:boolean,
     deleteTask:(id:number) => void
+    completeTask: (id:number) => void
+
 }
 
-const singleTask: React.FC<Props> = ({id, task, isDone,deleteTask}) => {
+const singleTask: React.FC<Props> = ({id, task, deleteTask, completeTask}) => {
   return (
     <div className="task">
-      <div className="task__description">
-        {task}
-      </div>
-      <div className="task__icons">
-      <div>
-        {isDone ?  ""  :<AiFillEdit/>}
-      </div>
-      <div>
-        {isDone ? "" : <AiFillDelete onClick={()=>deleteTask(id)}/>}
-      </div>
-      <div>
-        {isDone ?  ""  :<BsPatchCheckFill/>}
-      </div>
+      <div className="task__description">{task}</div>
+        <div className="task__icons">
+        <div><AiFillEdit/></div>
+        <div><AiFillDelete onClick={()=>deleteTask(id)}/></div>
+        <div><BsPatchCheckFill onClick={()=>completeTask(id)}/></div>
       </div>
     </div>
   )

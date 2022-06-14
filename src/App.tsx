@@ -11,6 +11,8 @@ const App: React.FC = () => {
 
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
+  const [completedTask, setCompleteTask] = useState<string>("");
+  const [completedTasks, setCompletedTasks] = useState<ITask[]>([]);
 
   // const [completed, setCompleted] = useState<boolean>(false);
   
@@ -20,7 +22,12 @@ const App: React.FC = () => {
   }
 
   const completeTask = (id: number) => {
-
+    tasks.filter((task)=>{
+      if(task.id === id){
+        setCompletedTasks([...completedTasks,task]);
+      }
+    })
+    setTasks(tasks.filter((task) => task.id !== id));
   }
 
   const addTask = (event:React.FormEvent) => {
@@ -38,7 +45,7 @@ const App: React.FC = () => {
         <h4>DAILY PLANNER</h4>
       </div>
       <Form task={task} setTask={setTask} addTask={addTask}/>
-      <Tasks tasks={tasks} deleteTask={deleteTask}/>
+      <Tasks tasks={tasks} deleteTask={deleteTask} completedTasks={completedTasks} completeTask={completeTask}/>
     </div>
   );
 }
