@@ -11,10 +11,10 @@ interface Props {
 
 }
 
-const singleTask: React.FC<Props> = ({id, task, deleteTask, completeTask}) => {
+const singleTask: React.FC<Props> = ({id, task, isDone,deleteTask, completeTask}) => {
   return (
     <div className="task">
-      <div className="task__description">{task}</div>
+      <div className={isDone ? "task__description strike" : "task__description" }>{task}</div>
         <div className="task__icons">
         <div><AiFillEdit/></div>
         <div><AiFillDelete onClick={()=>deleteTask(id)}/></div>

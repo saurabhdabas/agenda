@@ -31,7 +31,6 @@ const Tasks:React.FC<Props> = ({tasks,completedTasks,deleteTask,completeTask}) =
         <h2>COMPLETED TASKS</h2>
         {completedTasks?.map((action, index) => (
           console.log("action",action),
-          
           <SingleTask
             key={action.id}
             id={action.id}
